@@ -7,10 +7,8 @@
 3. To initialize the control, import the Chart namespace.
 4. Initialize [SfFunnelChart]().
 
-{% tabs %} 
-
-{% highlight xaml %}
-
+**[XAML]**
+```
 <ContentPage   
     . . .
     xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts">
@@ -18,9 +16,10 @@
     <chart:SfFunnelChart/>
 </ContentPage>
  
-{% endhighlight %}
+```
 
-{% highlight C# %}
+**[C#]**
+```
 
 using Syncfusion.Maui.Charts;
 . . .
@@ -33,15 +32,14 @@ public partial class MainWindow : ContentPage
         SfFunnelChart chart = new SfFunnelChart();
     }
 }   
-{% endhighlight %}
-
-{% endtabs %}
+```
 
 ## Register the handler
 
 Syncfusion.Maui.Core Nuget is a dependent package for all Syncfusion controls of .NET MAUI. In the MauiProgram.cs file, register the handler for Syncfusion core.
 
-{% highlight C# %}
+**[C#]**
+```
 
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
@@ -70,15 +68,14 @@ namespace ChartGettingStarted
     }
 }
 
-{% endhighlight %} 
+```
 
 ## Initialize view model
 
 Now, let us define a simple data model that represents a data point in the chart.
 
-{% tabs %}  
-
-{% highlight c# %}
+**[C#]**
+```
 
  public class Admission
 {
@@ -86,15 +83,12 @@ Now, let us define a simple data model that represents a data point in the chart
     public double YValue { get; set; }
 }
 
-{% endhighlight %} 
-
-{% endtabs %} 
+```
 
 Next, create a view model class and initialize a list of `Model` objects as follows.
 
-{% tabs %}  
-
-{% highlight c# %}
+**[C#]**
+```
 
 public class ChartViewModel
 {
@@ -113,17 +107,14 @@ public class ChartViewModel
     }
 }
 
-{% endhighlight %} 
-
-{% endtabs %} 
+```
 
 Create a `ViewModel` instance and set it as the chart's `BindingContext`. This enables property binding from `ViewModel` class.
 
 N> Add the namespace of `ViewModel` class to your XAML Page, if you prefer to set `BindingContext` in XAML.
 
-{% tabs %} 
-
-{% highlight xaml %} 
+**[XAML]**
+```
 
 <ContentPage
     . . .
@@ -137,24 +128,22 @@ N> Add the namespace of `ViewModel` class to your XAML Page, if you prefer to se
     </chart:SfFunnelChart>
 </ContentPage>
 
-{% endhighlight %}
+```
 
-{% highlight C# %} 
+**[C#]**
+```
 
 ChartViewModel viewModel = new ChartViewModel();
 chart.BindingContext = viewModel;
 
-{% endhighlight %}
-
-{% endtabs %} 
+```
 
 ## Populate chart with data
 
  Binding `Data` to the funnel chart [ItemsSource]() property from its BindingContext to create our own funnel chart.
 
-{% tabs %}   
-
-{% highlight xaml %}
+**[XAML]**
+```
 
 <chart:SfFunnelChart ItemsSource="{Binding Data}" 
                      XBindingPath="XValue" 
@@ -162,9 +151,10 @@ chart.BindingContext = viewModel;
 . . .            
 </chart:SfFunnelChart>
 
-{% endhighlight %}
+```
 
-{% highlight C# %}
+**[C#]**
+```
 
 SfFunnelChart chart = new SfFunnelChart();
 ChartViewModel viewModel = new ChartViewModel();
@@ -174,17 +164,14 @@ chart.XBindingPath = "XValue";
 chart.YBindingPath = "YValue";
 this.Content = chart;
 
-{% endhighlight %}
-
-{% endtabs %} 
+```
 
 ## Add a title
 
 The title of the chart acts as the title to provide quick information to the user about the data being plotted in the chart. You can set the title using the [Title](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Charts.ChartBase.html#Syncfusion_Maui_Charts_ChartBase_Title) property of the funnel chart as follows.
 
-{% tabs %} 
-
-{% highlight xaml %}
+**[XAML]**
+```
 
 <chart:SfFunnelChart>
     <chart:SfFunnelChart.Title>
@@ -193,9 +180,10 @@ The title of the chart acts as the title to provide quick information to the use
     . . .
 </chart:SfFunnelChart>
 
-{% endhighlight %}
+```
 
-{% highlight C# %}
+**[C#]**
+```
 
 SfFunnelChart chart = new SfFunnelChart();
 chart.Title = new Label
@@ -203,41 +191,36 @@ chart.Title = new Label
     Text = "School Admission"
 };
 
-{% endhighlight %}
-
-{% endtabs %}  
+```
 
 ## Enable the data labels
 
 The [ShowDataLabels]() property of the chart can be used to enable data labels to improve the readability of the funnel chart. The label visibility is set to `False` by default.
 
-{% tabs %} 
-
-{% highlight xaml %}
+**[XAML]**
+```
 
 <chart:SfFunnelChart ShowDataLabels="True">
     . . .
 </chart:SfFunnelChart>
 
-{% endhighlight %}
+```
 
-{% highlight C# %}
+**[C#]**
+```
 
 SfFunnelChart chart = new SfFunnelChart();
 . . .
 chart.ShowDataLabels = true;
 
-{% endhighlight %}
-
-{% endtabs %} 
+```
 
 ## Enable a legend
 
 The legend provides information about the data point displayed in the funnel chart. The [Legend](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Charts.ChartBase.html#Syncfusion_Maui_Charts_ChartBase_Legend) property of the chart was used to enable it.
 
-{% tabs %} 
-
-{% highlight xaml %}
+**[XAML]**
+```
 
 <chart:SfFunnelChart>
     . . .
@@ -246,47 +229,43 @@ The legend provides information about the data point displayed in the funnel cha
     </chart:SfFunnelChart.Legend>
 </chart:SfFunnelChart>
 
-{% endhighlight %}
+```
 
-{% highlight C# %}
+**[C#]**
+```
 
 SfFunnelChart chart = new SfFunnelChart();
 . . .
 chart.Legend = new ChartLegend();
 
-{% endhighlight %}
-
-{% endtabs %} 
+```
 
 ## Enable Tooltip
 
 Tooltips are used to show information about the segment, when mouse over on it. Enable tooltip by setting the chart [EnableTooltip]() property as true.
 
-{% tabs %} 
-
-{% highlight xaml %}
+**[XAML]**
+```
 
 <chart:SfFunnelChart EnableTooltip="True">
     . . .
 </chart:SfFunnelChart>
 
-{% endhighlight %}
+```
 
-{% highlight C# %}
+**[C#]**
+```
 
 SfFunnelChart chart = new SfFunnelChart();
 . . .
 chart.EnableTooltip = true;
 
-{% endhighlight %}
-
-{% endtabs %}
+```
 
 The following code example gives you the complete code of above configurations.
 
-{% tabs %} 
-
-{% highlight xaml %}
+**[XAML]**
+```
 
 <chart:SfFunnelChart ItemsSource="{Binding Data}" 
                      ShowDataLabels="True" 
@@ -304,9 +283,10 @@ The following code example gives you the complete code of above configurations.
     </chart:SfFunnelChart.Legend>
 </chart:SfFunnelChart>
  
-{% endhighlight %}
+```
 
-{% highlight C# %}
+**[C#]**
+```
 
 using Syncfusion.Maui.Charts;
 . . .
@@ -332,8 +312,6 @@ public partial class MainPage : ContentPage
     }
 }
 
-{% endhighlight %}
-
-{% endtabs %}
+```
 
 ![Funnel chart in .NET MAUI Chart](MAUI_funnel_chart.png)
