@@ -111,7 +111,8 @@ public class ChartViewModel
 
 Create a `ViewModel` instance and set it as the chart's `BindingContext`. This enables property binding from `ViewModel` class.
 
-N> Add the namespace of `ViewModel` class to your XAML Page, if you prefer to set `BindingContext` in XAML.
+> **_Note:_**
+Add the namespace of `ViewModel` class to your XAML Page, if you prefer to set `BindingContext` in XAML.
 
 **[XAML]**
 ```
