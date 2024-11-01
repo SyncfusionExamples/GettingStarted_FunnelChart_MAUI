@@ -28,6 +28,7 @@ public partial class MainWindow : ContentPage
     {
         this.InitializeComponent();
         SfFunnelChart chart = new SfFunnelChart();
+        this.Content = chart;
     }
 }   
 ```
@@ -72,39 +73,39 @@ Now, let us define a simple data model that represents a data point in the chart
 
 **[C#]**
 ```
- public class Admission
+ public class AdmissionModel
 {
     public string XValue { get; set; }
     public double YValue { get; set; }
 }
 ```
 
-Next, create a view model class and initialize a list of `Model` objects as follows.
+Next, create a AdmissionViewModel class and initialize a list of `AdmissionModel` objects as follows.
 
 **[C#]**
 ```
-public class ChartViewModel
+public class AdmissionViewModel
 {
-    public List<Admission> Data { get; set; }
+    public List<AdmissionModel> Data { get; set; }
 
-    public ChartViewModel()
+    public AdmissionViewModel()
     {
-        Data = new List<Admission>()
+        Data = new List<AdmissionModel>()
         {
-            new Admission() {XValue = "Enrolled", YValue=175},
-            new Admission() {XValue = "Admits", YValue=190},
-            new Admission() {XValue = "Applicants", YValue=245},
-            new Admission() {XValue = "Inquiries ", YValue=290},
-            new Admission() {XValue = "Prospects ", YValue=320},
+            new AdmissionModel() {XValue = "Enrolled", YValue=175},
+            new AdmissionModel() {XValue = "Admits", YValue=190},
+            new AdmissionModel() {XValue = "Applicants", YValue=245},
+            new AdmissionModel() {XValue = "Inquiries ", YValue=290},
+            new AdmissionModel() {XValue = "Prospects ", YValue=320},
         };
     }
 }
 ```
 
-Create a `ViewModel` instance and set it as the chart's `BindingContext`. This enables property binding from `ViewModel` class.
+Create a `AdmissionViewModel` instance and set it as the chart's `BindingContext`. This enables property binding from `AdmissionViewModel` class.
 
 > **_Note:_**
-Add the namespace of `ViewModel` class to your XAML Page, if you prefer to set `BindingContext` in XAML.
+Add the namespace of `AdmissionViewModel` class to your XAML Page, if you prefer to set `BindingContext` in XAML.
 
 **[XAML]**
 ```
@@ -115,7 +116,7 @@ Add the namespace of `ViewModel` class to your XAML Page, if you prefer to set `
 
     <chart:SfFunnelChart>
         <chart:SfFunnelChart.BindingContext>
-        <model:ChartViewModel/>
+            <model:AdmissionViewModel/>
         </chart:SfFunnelChart.BindingContext>
     </chart:SfFunnelChart>
 </ContentPage>
@@ -123,7 +124,8 @@ Add the namespace of `ViewModel` class to your XAML Page, if you prefer to set `
 
 **[C#]**
 ```
-ChartViewModel viewModel = new ChartViewModel();
+SfFunnelChart chart = new SfFunnelChart();
+AdmissionViewModel viewModel = new AdmissionViewModel();
 chart.BindingContext = viewModel;
 ```
 
@@ -143,7 +145,7 @@ chart.BindingContext = viewModel;
 **[C#]**
 ```
 SfFunnelChart chart = new SfFunnelChart();
-ChartViewModel viewModel = new ChartViewModel();
+AdmissionViewModel viewModel = new AdmissionViewModel();
 chart.BindingContext = viewModel;
 chart.ItemsSource = viewModel.Data;
 chart.XBindingPath = "XValue";
@@ -244,7 +246,7 @@ The following code example gives you the complete code of above configurations.
         <Label Text="School Admission"/>
     </chart:SfFunnelChart.Title>
     <chart:SfFunnelChart.BindingContext>
-        <model:ChartViewModel/>
+        <model:AdmissionViewModel/>
     </chart:SfFunnelChart.BindingContext>
     <chart:SfFunnelChart.Legend>
         <chart:ChartLegend/>
@@ -266,7 +268,7 @@ public partial class MainPage : ContentPage
             Text = "School Admission"
         };
         chart.Legend = new ChartLegend();
-        ChartViewModel viewModel = new ChartViewModel();
+        AdmissionViewModel viewModel = new AdmissionViewModel();
         chart.BindingContext = viewModel;
 
         chart.ItemsSource = viewModel.Data;
