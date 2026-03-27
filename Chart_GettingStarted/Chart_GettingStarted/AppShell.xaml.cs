@@ -1,9 +1,10 @@
-﻿namespace Chart_GettingStarted;
-
-public partial class AppShell : Shell
+﻿namespace Chart_GettingStarted
 {
-	public AppShell()
-	{
-		InitializeComponent();
-	}
+    public partial class AppShell : Shell
+    {
+        public AppShell()
+        {
+            InitializeComponent();
+        }
+    }
 }
