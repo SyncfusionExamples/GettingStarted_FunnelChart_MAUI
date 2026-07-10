@@ -8,7 +8,7 @@ namespace Chart_GettingStarted
 {
     public class AdmissionModel
     {
-        public string XValue { get; set; }
+        public string XValue { get; set; } = String.Empty;
         public double YValue { get; set; }
     }
 }
